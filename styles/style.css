@@ -1,5 +1,575 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  background-image: var(--bg-image);
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-family, 'Inter', sans-serif);
+}
+
+/* ---------- HEADER LAYOUT ---------- */
+.header {
+  position: relative;
+  min-block-size: 100vh;
+  padding: var(--space-l);
+}
+
+/* ---------- THEME MENU (по центру сверху) ---------- */
+.header__theme-menu {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.header__theme-menu-list {
+  display: flex;
+  gap: var(--space-s);
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.header__theme-menu-item {
+  list-style: none;
+}
+
+.header__theme-menu-button {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-color);
+  text-transform: lowercase;
+  cursor: pointer;
+  padding: 4px 10px;
+  transition: border-color 0.3s, color 0.3s;
+}
+
+.header__theme-menu-button:hover {
+  border-color: var(--text-color);
+}
+
+.header__theme-menu-button:focus-visible {
+  border-color: var(--accent-color);
+  outline: none;
+}
+
+.header__theme-menu-button_active {
+  border-color: var(--text-color);
+  pointer-events: none;
+}
+
+/* ---------- TITLE "no focus" ---------- */
+.header__title {
+  position: absolute;
+  left: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  font-weight: 700;
+  text-transform: lowercase;
+  color: var(--text-color);
+  text-shadow: 4px 4px 0 #ff0070;
+  margin: 0;
+}
+
+/* ---------- SUBTITLE (pink box, bottom right) ---------- */
+.header__subtitle {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  max-width: 400px;
+  background-color: #ff0070;
+  color: #000;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 14px;
+  line-height: 1.4;
+  padding: 10px 12px;
+  border-radius: 4px;
+}
+
+/* ---------- REC LABEL ---------- */
+.rec {
+  position: absolute;
+  inset-block-start: 20px;
+  inset-inline-end: 20px;
+  font-size: 14px;
+  color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding-inline-end: 10px;
+  border-top: 1px solid var(--accent-color);
+  border-right: 1px solid var(--accent-color);
+}
+
+.rec::after {
+  content: "";
+  display: inline-block;
+  inline-size: 10px;
+  block-size: 10px;
+  background-color: var(--accent-color);
+  border-radius: 50%;
+  filter: blur(2px);
+}
+
+/* ---------- DECORATED CORNERS ---------- */
+/* Убираем верхний правый квадрат */
+.decorated-zone::before {
+  content: none;
+}
+
+/* Оставляем нижний левый угол */
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  inline-size: 25px;
+  block-size: 25px;
+  border: 1px solid var(--accent-color);
+  inset-block-end: 0;
+  inset-inline-start: 0;
+  border-inline-end: none;
+  border-block-start: none;
+}
+
+
+
+
+
+.gallery {
+  padding: var(--space-l) var(--space-m);
+}
+
+.gallery__grid {
+  display: grid;
+  gap: var(--space-m);
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.gallery__grid img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.footer {
+  display: grid;
+  place-items: center;
+  padding: var(--space-l) var(--space-m);
+  position: relative;
+  min-block-size: 30vh;
+}
+
+/* Заголовок футера */
+.footer__title {
+  font-weight: 700;
+  text-transform: uppercase;
+  text-shadow: var(--text-shadow);
+  font-size: clamp(2rem, 1rem + 4vw, 4rem);
+}
+
+/* Декоративные уголки — переиспользуем */
+.decorated-zone::before,
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  inline-size: 25px;
+  block-size: 25px;
+  border: 1px solid var(--accent-color);
+}
+/* ---------- style.css ---------- */
+
+/* Базовая мобильная версия (до 768px) — уже написана выше */
+
+/* --- Планшет --- */
+@media (min-width: 768px) {
+  .header {
+    grid-template-columns: 1fr auto;
+    padding-inline: var(--space-l);
+    padding-block: var(--space-l);
+  }
+
+  .header__title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+
+  .gallery__grid {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-l);
+  }
+
+  .footer {
+    min-block-size: 40vh;
+  }
+}
+
+/* --- Десктоп --- */
+@media (min-width: 1024px) {
+  .header {
+    padding-inline: calc(var(--space-l) * 2);
+  }
+
+  .gallery {
+    padding-inline: calc(var(--space-l) * 2);
+  }
+
+  .gallery__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .footer {
+    padding-inline: calc(var(--space-l) * 2);
+  }
+}
+.header__theme-menu-list {
+  display: flex;
+  gap: var(--space-s);
+  justify-content: center;
+}
+
+.header__theme-menu-button {
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 4px 8px;
+  text-transform: lowercase;
+  transition: border-color var(--transition-speed), color var(--transition-speed);
+}
+
+.header__theme-menu-button:hover {
+  border-color: var(--text-color);
+}
+
+.header__theme-menu-button:focus-visible {
+  border: 1px solid var(--text-color);
+  outline: none;
+}
+
+.header__theme-menu-button_active {
+  border-color: var(--text-color);
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+
+/* ---------- MAIN SECTION ---------- */
+.main {
+  background-color: #000028; /* тёмно-синий фон */
+  padding: 60px 20px;
+  min-block-size: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* ---------- SECTION GRID LAYOUT ---------- */
+.section {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: start;
+  gap: 40px;
+  max-inline-size: 1200px;
+  margin-inline: auto;
+}
+
+/* ---------- LEFT COLUMN (TITLE) ---------- */
+.section__title {
+  color: #ff0070; /* розовый */
+  font-size: clamp(1.25rem, 1rem + 0.8vw, 1.75rem);
+  font-weight: 700;
+  text-align: left;
+  line-height: 1.2;
+}
+
+/* ---------- RIGHT COLUMN (CONTENT) ---------- */
+.section__content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* ---------- SUBTITLE ---------- */
+.section__subtitle {
+  display: inline-block;
+  background-color: #ff0070; /* розовая полоска */
+  color: #000; /* чёрный текст */
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1rem;
+  font-weight: 500;
+  padding: 2px 8px;
+  margin-block-start: 0;
+}
+
+/* ---------- TEXT ---------- */
+.section__text {
+  color: #f1b2ce; /* светло-розовый */
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+
+
+.focus-loss {
+  background-color: #000028;
+  padding: 60px 40px;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* чтобы заголовок был слева */
+  gap: 40px; /* расстояние между заголовком и таблицей */
+}
+
+/* Заголовок */
+.focus-loss .section__title {
+  color: #ff0070;
+  font-size: clamp(1.25rem, 1vw + 1rem, 1.75rem);
+  font-weight: 700;
+  text-align: left;
+  font-family: "IBM Plex Mono", monospace;
+  width: 100%;
+}
+
+/* Таблица прямо под заголовком, растягивается на всю ширину */
+.section__table {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ячейки таблицы */
+.section__cell {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* Подзаголовки */
+.section__subtitle {
+  background-color: #ff0070;
+  color: #000028;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 4px 8px;
+}
+
+/* Текст */
+.section__text {
+  color: #f1b2ce;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ---------- Адаптив ---------- */
+@media (max-width: 1024px) {
+  .section__table {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .section__table {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* ---------- THIRD SECTION (как первая) ---------- */
+.focus-better {
+  background-color: #000028;
+  padding: 60px 40px;
+  width: 100%;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: start;
+  gap: 40px;
+  max-inline-size: 1200px;
+  margin-inline: auto;
+}
+
+/* Заголовок (слева) */
+.focus-better .section__title {
+  color: #ff0070;
+  font-size: clamp(1.25rem, 1rem + 0.8vw, 1.75rem);
+  font-weight: 700;
+  text-align: left;
+  line-height: 1.3;
+  font-family: "IBM Plex Mono", monospace;
+}
+
+/* Контент (справа) */
+.focus-better .section__content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+/* Подзаголовок 2 */
+/* Заголовок 2 */
+/* === Заголовок 2 на всю ширину === */
+/* === Заголовок 2 и подзаголовки на всю ширину экрана === */
+.focus-better__subtitle-main,
+.focus-better__subtitle {
+  position: relative;
+  display: block;
+  width: 100%; /* занимает всю ширину родителя */
+  background-color: #ff0070;
+  color: #000028;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 700;
+  font-size: 1rem;
+  padding: 10px 0;
+  margin: 40px 0 10px 0;
+  text-align: left;
+  z-index: 1;
+}
+
+/* создаём "фон-полосу" за пределами контейнера */
+.focus-better__subtitle-main::before,
+.focus-better__subtitle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100vw;          /* 🔥 реально растягиваем фон на весь экран */
+  height: 100%;
+  background-color: #ff0070;
+  z-index: -1;
+}
+
+
+
+/* Текст */
+.focus-better .section__text {
+  color: #f1b2ce;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* Ссылка с розовой тенью */
+.focus-better .section__link {
+  color: #ff0070;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-shadow: 0 0 6px #ff0070;
+}
+
+/* Адаптив */
+@media (max-width: 900px) {
+  .focus-better {
+    grid-template-columns: 1fr;
+  }
+
+  .focus-better .section__title {
+    text-align: center;
+  }
+}
+
+
+
+/* ---------- Галерея: точное позиционирование 5 картинок ---------- */
+.gallery {
+  background-color: #000028;
+  padding: 40px 32px;
+  box-sizing: border-box;
+}
+
+/* Заголовок — полоса */
+.gallery__title {
+  background-color: #ff0070;
+  color: #000028;
+  font-family: "IBM Plex Mono", monospace;
+  font-weight: 700;
+  font-size: 1.125rem;
+  padding: 8px 16px;
+  margin: 0 0 24px 0;
+  width: 100%;
+  box-sizing: border-box;
+  text-align: left;
+}
+
+/* Контейнер — большой квадрат, внутри grid 6x6 для точного позиционирования */
+.gallery__grid {
+  width: 100%;
+  max-width: 1200px;        /* подстрой под желаемый размер */
+  aspect-ratio: 1 / 1;      /* квадратная область */
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+
+  /* 6x6 сетка — даёт тонкую настройку ширины и высоты зон */
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+
+  /* box sizing */
+  box-sizing: border-box;
+}
+
+/* Общие стили картинок */
+.gallery__item {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  background: #0b0b1a;
+  box-shadow: 0 0 0 8px rgba(0,0,0,0.65) inset; /* тёмная "шпация" между плитками */
+}
+
+/* Расположение картинок (подбираем по заданным пропорциям) */
+/* 1 — крупная верхняя слева (примерно 650x260) */
+.gallery__item--1 {
+  grid-column: 1 / span 4; /* cols 1-4 */
+  grid-row: 1 / span 2;    /* rows 1-2 */
+}
+
+/* 2 — высокая правая сверху (примерно 314x595) */
+.gallery__item--2 {
+  grid-column: 6 / span 3; /* last narrow column (col 6) */
+  grid-row: 1 / span 3;    /* rows 1-3 (высокая) */
+}
+
+/* 3 — высокая слева внизу (примерно 315x768) */
+.gallery__item--3 {
+  grid-column: 1 / span 2; /* cols 1-2 */
+  grid-row: 3 / span 4;    /* rows 3-6 (высокая нижняя) */
+}
+
+/* 4 — широкая справа внизу (примерно 649x433) */
+.gallery__item--4 {
+  grid-column: 3 / span 4; /* cols 3-6 (широкая снизу справа) */
+  grid-row: 4 / span 3;    /* rows 4-6 */
+}
+
+/* 5 — центральная средняя (примерно 315x315) */
+.gallery__item--5 {
+  grid-column: 3 / span 2; /* cols 3-4 (центр) */
+  grid-row: 2 / span 2;    /* rows 2-3 (центр) */
+}
+
+/* Адаптив — на узких экранах превращаем в аккуратную колонку */
+@media (max-width: 900px) {
+  .gallery__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+    gap: 12px;
+    aspect-ratio: auto;
+    max-width: 900px;
+  }
+
+  .gallery__item {
+    box-shadow: none;
+    border-radius: 6px;
+  }
 }
