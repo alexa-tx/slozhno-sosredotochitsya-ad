@@ -8,14 +8,12 @@
   font-family: var(--font-family, 'Inter', sans-serif);
 }
 
-/* ---------- HEADER LAYOUT ---------- */
 .header {
   position: relative;
   min-block-size: 100vh;
   padding: var(--space-l);
 }
 
-/* ---------- THEME MENU (по центру сверху) ---------- */
 .header__theme-menu {
   position: absolute;
   top: 20px;
@@ -59,7 +57,6 @@
   pointer-events: none;
 }
 
-/* ---------- TITLE "no focus" ---------- */
 .header__title {
   position: absolute;
   left: 20px;
@@ -73,7 +70,6 @@
   margin: 0;
 }
 
-/* ---------- SUBTITLE (pink box, bottom right) ---------- */
 .header__subtitle {
   position: absolute;
   right: 20px;
@@ -88,7 +84,6 @@
   border-radius: 4px;
 }
 
-/* ---------- REC LABEL ---------- */
 .rec {
   position: absolute;
   inset-block-start: 20px;
@@ -113,13 +108,10 @@
   filter: blur(2px);
 }
 
-/* ---------- DECORATED CORNERS ---------- */
-/* Убираем верхний правый квадрат */
 .decorated-zone::before {
   content: none;
 }
 
-/* Оставляем нижний левый угол */
 .decorated-zone::after {
   content: "";
   position: absolute;
@@ -131,10 +123,6 @@
   border-inline-end: none;
   border-block-start: none;
 }
-
-
-
-
 
 .gallery {
   padding: var(--space-l) var(--space-m);
@@ -153,6 +141,7 @@
   object-fit: cover;
   border-radius: 10px;
 }
+
 .footer {
   display: grid;
   place-items: center;
@@ -161,7 +150,6 @@
   min-block-size: 30vh;
 }
 
-/* Заголовок футера */
 .footer__title {
   font-weight: 700;
   text-transform: uppercase;
@@ -169,7 +157,6 @@
   font-size: clamp(2rem, 1rem + 4vw, 4rem);
 }
 
-/* Декоративные уголки — переиспользуем */
 .decorated-zone::before,
 .decorated-zone::after {
   content: "";
@@ -178,11 +165,7 @@
   block-size: 25px;
   border: 1px solid var(--accent-color);
 }
-/* ---------- style.css ---------- */
 
-/* Базовая мобильная версия (до 768px) — уже написана выше */
-
-/* --- Планшет --- */
 @media (min-width: 768px) {
   .header {
     grid-template-columns: 1fr auto;
@@ -204,7 +187,6 @@
   }
 }
 
-/* --- Десктоп --- */
 @media (min-width: 1024px) {
   .header {
     padding-inline: calc(var(--space-l) * 2);
@@ -253,10 +235,8 @@
   opacity: 0.6;
 }
 
-
-/* ---------- MAIN SECTION ---------- */
 .main {
-  background-color: #000028; /* тёмно-синий фон */
+  background-color: #000028;
   padding: 60px 20px;
   min-block-size: 100vh;
   display: flex;
@@ -264,7 +244,6 @@
   justify-content: center;
 }
 
-/* ---------- SECTION GRID LAYOUT ---------- */
 .section {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -274,27 +253,24 @@
   margin-inline: auto;
 }
 
-/* ---------- LEFT COLUMN (TITLE) ---------- */
 .section__title {
-  color: #ff0070; /* розовый */
+  color: #ff0070;
   font-size: clamp(1.25rem, 1rem + 0.8vw, 1.75rem);
   font-weight: 700;
   text-align: left;
   line-height: 1.2;
 }
 
-/* ---------- RIGHT COLUMN (CONTENT) ---------- */
 .section__content {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
-/* ---------- SUBTITLE ---------- */
 .section__subtitle {
   display: inline-block;
-  background-color: #ff0070; /* розовая полоска */
-  color: #000; /* чёрный текст */
+  background-color: #ff0070;
+  color: #000;
   font-family: "IBM Plex Mono", monospace;
   font-size: 1rem;
   font-weight: 500;
@@ -302,15 +278,12 @@
   margin-block-start: 0;
 }
 
-/* ---------- TEXT ---------- */
 .section__text {
-  color: #f1b2ce; /* светло-розовый */
+  color: #f1b2ce;
   font-family: "IBM Plex Mono", monospace;
   font-size: 1rem;
   line-height: 1.6;
 }
-
-
 
 .focus-loss {
   background-color: #000028;
@@ -319,11 +292,10 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  align-items: flex-start; /* чтобы заголовок был слева */
-  gap: 40px; /* расстояние между заголовком и таблицей */
+  align-items: flex-start;
+  gap: 40px;
 }
 
-/* Заголовок */
 .focus-loss .section__title {
   color: #ff0070;
   font-size: clamp(1.25rem, 1vw + 1rem, 1.75rem);
@@ -333,7 +305,6 @@
   width: 100%;
 }
 
-/* Таблица прямо под заголовком, растягивается на всю ширину */
 .section__table {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -342,14 +313,12 @@
   box-sizing: border-box;
 }
 
-/* Ячейки таблицы */
 .section__cell {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-/* Подзаголовки */
 .section__subtitle {
   background-color: #ff0070;
   color: #000028;
@@ -359,7 +328,6 @@
   padding: 4px 8px;
 }
 
-/* Текст */
 .section__text {
   color: #f1b2ce;
   font-family: "IBM Plex Mono", monospace;
@@ -367,7 +335,6 @@
   line-height: 1.6;
 }
 
-/* ---------- Адаптив ---------- */
 @media (max-width: 1024px) {
   .section__table {
     grid-template-columns: 1fr 1fr;
@@ -380,8 +347,6 @@
   }
 }
 
-
-/* ---------- THIRD SECTION (как первая) ---------- */
 .focus-better {
   background-color: #000028;
   padding: 60px 40px;
@@ -395,7 +360,6 @@
   margin-inline: auto;
 }
 
-/* Заголовок (слева) */
 .focus-better .section__title {
   color: #ff0070;
   font-size: clamp(1.25rem, 1rem + 0.8vw, 1.75rem);
@@ -405,22 +369,17 @@
   font-family: "IBM Plex Mono", monospace;
 }
 
-/* Контент (справа) */
 .focus-better .section__content {
   display: flex;
   flex-direction: column;
   gap: 30px;
 }
 
-/* Подзаголовок 2 */
-/* Заголовок 2 */
-/* === Заголовок 2 на всю ширину === */
-/* === Заголовок 2 и подзаголовки на всю ширину экрана === */
 .focus-better__subtitle-main,
 .focus-better__subtitle {
   position: relative;
   display: block;
-  width: 100%; /* занимает всю ширину родителя */
+  width: 100%;
   background-color: #ff0070;
   color: #000028;
   font-family: "IBM Plex Mono", monospace;
@@ -432,7 +391,6 @@
   z-index: 1;
 }
 
-/* создаём "фон-полосу" за пределами контейнера */
 .focus-better__subtitle-main::before,
 .focus-better__subtitle::before {
   content: "";
@@ -440,15 +398,12 @@
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 100vw;          /* 🔥 реально растягиваем фон на весь экран */
+  width: 100vw;
   height: 100%;
   background-color: #ff0070;
   z-index: -1;
 }
 
-
-
-/* Текст */
 .focus-better .section__text {
   color: #f1b2ce;
   font-family: "IBM Plex Mono", monospace;
@@ -456,7 +411,6 @@
   line-height: 1.6;
 }
 
-/* Ссылка с розовой тенью */
 .focus-better .section__link {
   color: #ff0070;
   text-decoration: underline;
@@ -464,7 +418,6 @@
   text-shadow: 0 0 6px #ff0070;
 }
 
-/* Адаптив */
 @media (max-width: 900px) {
   .focus-better {
     grid-template-columns: 1fr;
@@ -477,99 +430,91 @@
 
 
 
-/* ---------- Галерея: точное позиционирование 5 картинок ---------- */
+/* ---------- ГАЛЕРЕЯ: ПОМЕНЯТЬ ---------- */
 .gallery {
   background-color: #000028;
-  padding: 40px 32px;
+  padding: 60px 40px;
+  width: 100%;
   box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
 }
 
-/* Заголовок — полоса */
 .gallery__title {
+  align-self: flex-start;
   background-color: #ff0070;
   color: #000028;
   font-family: "IBM Plex Mono", monospace;
   font-weight: 700;
   font-size: 1.125rem;
   padding: 8px 16px;
-  margin: 0 0 24px 0;
-  width: 100%;
+  margin: 0;
   box-sizing: border-box;
-  text-align: left;
 }
 
-/* Контейнер — большой квадрат, внутри grid 6x6 для точного позиционирования */
 .gallery__grid {
-  width: 100%;
-  max-width: 1200px;        /* подстрой под желаемый размер */
-  aspect-ratio: 1 / 1;      /* квадратная область */
-  margin: 0 auto;
   display: grid;
-  gap: 20px;
-
-  /* 6x6 сетка — даёт тонкую настройку ширины и высоты зон */
-  grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(6, 1fr);
-
-  /* box sizing */
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 16px;
+  width: 100%;
+  max-width: 1200px;
+  aspect-ratio: 1 / 1;
   box-sizing: border-box;
 }
 
-/* Общие стили картинок */
 .gallery__item {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  border-radius: 12px;
   display: block;
-  border-radius: 8px;
-  background: #0b0b1a;
-  box-shadow: 0 0 0 8px rgba(0,0,0,0.65) inset; /* тёмная "шпация" между плитками */
 }
 
-/* Расположение картинок (подбираем по заданным пропорциям) */
-/* 1 — крупная верхняя слева (примерно 650x260) */
 .gallery__item--1 {
-  grid-column: 1 / span 4; /* cols 1-4 */
-  grid-row: 1 / span 2;    /* rows 1-2 */
+  grid-column: 1 / span 3;
+  grid-row: 1 / span 1;
 }
 
-/* 2 — высокая правая сверху (примерно 314x595) */
 .gallery__item--2 {
-  grid-column: 6 / span 3; /* last narrow column (col 6) */
-  grid-row: 1 / span 3;    /* rows 1-3 (высокая) */
+  grid-column: 4 / span 1;
+  grid-row: 1 / span 3;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* 3 — высокая слева внизу (примерно 315x768) */
 .gallery__item--3 {
-  grid-column: 1 / span 2; /* cols 1-2 */
-  grid-row: 3 / span 4;    /* rows 3-6 (высокая нижняя) */
+  grid-column: 1 / span 1;
+  grid-row: 3 / span 3;
 }
 
-/* 4 — широкая справа внизу (примерно 649x433) */
 .gallery__item--4 {
-  grid-column: 3 / span 4; /* cols 3-6 (широкая снизу справа) */
-  grid-row: 4 / span 3;    /* rows 4-6 */
+  grid-column: 2 / span 3;
+  grid-row: 5 / span 1;
 }
 
-/* 5 — центральная средняя (примерно 315x315) */
 .gallery__item--5 {
-  grid-column: 3 / span 2; /* cols 3-4 (центр) */
-  grid-row: 2 / span 2;    /* rows 2-3 (центр) */
+  grid-column: 2 / span 2;
+  grid-row: 2 / span 2;
 }
 
-/* Адаптив — на узких экранах превращаем в аккуратную колонку */
 @media (max-width: 900px) {
+  .gallery {
+    padding: 40px 20px;
+  }
+
   .gallery__grid {
-    display: grid;
     grid-template-columns: 1fr;
     grid-auto-rows: auto;
     gap: 12px;
     aspect-ratio: auto;
-    max-width: 900px;
   }
 
-  .gallery__item {
-    box-shadow: none;
-    border-radius: 6px;
+  .gallery__title {
+    align-self: center;
+    text-align: center;
   }
 }

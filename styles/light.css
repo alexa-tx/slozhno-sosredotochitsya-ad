@@ -9,7 +9,6 @@
   --text-shadow: 4px 4px 0 var(--accent-color);
 }
 
-/* Включается, если <html class="theme-light"> */
 :root.theme-light {
   --accent-color: #ff8dcb;
   --text-color: #353430;
@@ -18,7 +17,6 @@
   --rec-image: url("../images/rec-light.svg");
 }
 
-/* Автоматическое переключение при системной светлой теме */
 @media (prefers-color-scheme: light) {
   :root {
     --accent-color: #ff8dcb;
