@@ -1,14 +1,4 @@
-/* ---------- light.css ----------
-:root {
-  --accent-color: #ff8dcb;
-  --text-color: #353430;
-  --bg-color: #fff1f7;
-  --bg-image: url("../images/cover-image-light.png");
-
-  --link-hover-color: #ff8dcb80;
-  --text-shadow: 4px 4px 0 var(--accent-color);
-}
-
+/* ---------- light.css ---------- */
 :root.theme-light {
   --accent-color: #ff8dcb;
   --text-color: #353430;
@@ -27,65 +17,8 @@
   }
 }
 
-
-.theme-light .page {
-  /* Вам также нужно будет написать ряд подобных селекторов */
-/* } */
-
-:root.theme-light {
-  --accent-color: #FF8DCB;      /* рамочки и заливка */
-  --text-color: #353430;        /* текст */
-  --bg-color: #FFF1F7;          /* фон основной */
-  --bg-image: url("../images/cover-image-light.png"); /* фон header */
-  --rec-image: url("../images/rec-light.svg");
-
-  --link-hover-color: #FF8DCB80;
-  --text-shadow: 2px 2px 0 #FF8DCB; /* для заголовков */
-}
-
-.theme-light .page {
-  background-color: var(--bg-color);
-  background-image: none;
-}
-
-.theme-light .header {
-  background-image: var(--bg-image);
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-
-.theme-light .main,
-.theme-light .footer {
-  background-color: var(--bg-color);
-}
-
 .theme-light .header__title,
 .theme-light .footer__title {
-  color: #FFC2E6;
-  text-shadow: 2px 2px 0 #FF8DCB;
+  color: #ffc2e6;
+  text-shadow: 4px 4px 0 #ff8dcb;
 }
-
-.theme-light .section__subtitle,
-.theme-light .title-decor,
-.theme-light .gallery__title,
-.theme-light .header__theme-menu-button,
-.theme-light .header__theme-menu-button_active {
-  background-color: var(--accent-color);
-  color: var(--bg-color);
-  border-color: var(--accent-color);
-}
-
-.theme-light .section__text,
-.theme-light .section__link {
-  color: var(--text-color);
-}
-
-.theme-light .rec {
-  color: var(--accent-color);
-}
-.theme-light .rec::after {
-  background-color: var(--accent-color);
-  box-shadow: 0 0 4px 2px var(--accent-color);
-}
-

@@ -1,5 +1,4 @@
 /* ---------- Основные стили ---------- */
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 *,
 *::before,
 *::after {
@@ -19,6 +18,11 @@ body {
   line-height: var(--line-height-base);
   color: var(--text-color);
   background-color: var(--bg-color);
+  background-image: var(--bg-image);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 .decorated-zone {
@@ -49,16 +53,16 @@ body {
 
 /* ---------- Header ---------- */
 .header {
+  /* Make header fit viewport without overflow */
   min-height: 100vh;
+  max-height: 100vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr;
-  grid-template-areas:
-    "title subtitle";
+  grid-template-areas: "title subtitle";
   padding: var(--space-m);
   position: relative;
   align-items: center;
-  background-image: var(--bg-image);
 }
 
 .rec {
@@ -144,11 +148,12 @@ body {
   position: relative;
   align-self: center;
   justify-self: start;
-  color: #DB00FF;
-  text-shadow: 2px 2px 0 #FF0070;
-  font-size: clamp(12rem, 10rem + 10vw, 12rem);
+  color: #db00ff;
+  text-shadow: var(--text-shadow);
+  /* Adjust font size to fit viewport */
+  font-size: clamp(7rem, 7vw, 9.8125rem);
   font-weight: 700;
-  line-height: 0.9;
+  line-height: 0.825;
   margin: 0;
   z-index: 1;
 }
@@ -157,19 +162,20 @@ body {
   position: relative;
   justify-self: end;
   align-self: end;
-  max-width: 500px;
+  max-width: 491px;
   background-color: var(--accent-color);
   color: var(--bg-color);
   font-weight: 700;
   font-size: var(--font-size-base);
   line-height: var(--line-height-base);
   padding: var(--space-s);
-  margin: var(--space-s) 0 0;
+  margin: 0;
   z-index: 1;
 }
 
 .main {
-  padding: var(--space-l) var(--space-m);
+  /* Reduce padding and gaps to fit content better */
+  padding: 40px var(--space-m);
   display: flex;
   flex-direction: column;
   gap: 50px;
@@ -225,7 +231,9 @@ body {
 
 /* Секция "Что снижает концентрацию"  */
 .focus-loss {
-  grid-template-columns: 1fr 2fr;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-m);
 }
 
 .focus-loss .section__table {
@@ -343,6 +351,7 @@ body {
 /* ---------- Footer ---------- */
 .footer {
   min-height: 100vh;
+  max-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -352,18 +361,21 @@ body {
 }
 
 .footer__title {
-  color: #DB00FF;
-  text-shadow: 2px 2px 0 #FF0070;
-  font-size: clamp(6rem, 5rem + 5vw, 8rem);
+  color: #db00ff;
+  text-shadow: var(--text-shadow);
+  font-size: clamp(7rem, 7vw, 9.8125rem);
   font-weight: 700;
-  line-height: 0.9;
+  line-height: 0.825;
   margin: 0;
 }
 
 /* ---------- Адаптивность ---------- */
 @media (max-width: 767px) {
   .header {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
     padding: var(--space-s);
+    gap: 40px;
   }
 
   .decorated-zone::before,
@@ -389,10 +401,10 @@ body {
 
   .header__theme-menu {
     position: absolute;
-    top: 50%;
+    top: var(--space-s);
     right: var(--space-s);
     left: auto;
-    transform: translateY(-50%);
+    transform: none;
   }
 
   .header__theme-menu-list {
@@ -400,7 +412,8 @@ body {
   }
 
   .header__title {
-    font-size: clamp(7.25rem, 5.7694rem + 6.3174vw, 7.5rem);
+    font-size: clamp(6rem, 18vw, 7.5rem);
+    justify-self: start;
   }
 
   .header__subtitle {
@@ -409,8 +422,8 @@ body {
   }
 
   .main {
-    padding: var(--space-l) var(--space-s);
-    gap: 50px;
+    padding: 30px var(--space-s);
+    gap: 40px;
   }
 
   .why-focus,
@@ -443,21 +456,23 @@ body {
   }
 
   .footer__title {
-    font-size: clamp(7.25rem, 5.7694rem + 6.3174vw, 7.5rem);
+    font-size: clamp(6rem, 18vw, 7.5rem);
   }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) and (orientation: portrait) {
+@media (min-width: 768px) and (max-width: 1023px) {
   .header {
+    grid-template-columns: 1fr 1fr;
     padding: var(--space-m);
+    gap: 30px;
   }
 
   .header__theme-menu {
     position: absolute;
-    top: 50%;
+    top: var(--space-m);
     right: var(--space-m);
     left: auto;
-    transform: translateY(-50%);
+    transform: none;
   }
 
   .header__theme-menu-list {
@@ -466,7 +481,7 @@ body {
   }
 
   .header__title {
-    font-size: clamp(7.25rem, 6rem + 2vw, 7.5rem);
+    font-size: clamp(7rem, 10vw, 9.8125rem);
   }
 
   .header__subtitle {
@@ -475,14 +490,14 @@ body {
   }
 
   .main {
-    padding: var(--space-l) var(--space-m);
-    gap: 50px;
+    padding: 40px var(--space-m);
+    gap: 60px;
   }
 
   .why-focus,
   .focus-loss,
   .focus-better {
-    grid-template-columns: 1fr;
+    grid-template-columns: 236px 1fr;
   }
 
   .focus-loss .section__table {
@@ -525,172 +540,6 @@ body {
   }
 
   .footer__title {
-    font-size: clamp(7.25rem, 6rem + 2vw, 7.5rem);
+    font-size: clamp(7rem, 10vw, 9.8125rem);
   }
 }
-
-@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-  .header {
-    padding: var(--space-m);
-  }
-
-  .header__title {
-    font-size: clamp(7.25rem, 6rem + 2vw, 7.5rem);
-  }
-
-  .header__subtitle {
-    max-width: 364px;
-    justify-self: end;
-  }
-
-  .main {
-    padding: var(--space-l) var(--space-m);
-    gap: 50px;
-  }
-
-  .why-focus {
-    grid-template-columns: 1fr 2fr;
-  }
-
-  .focus-loss {
-    grid-template-columns: 1fr 2fr;
-  }
-
-  .focus-better {
-    grid-template-columns: 1fr;
-  }
-
-  .gallery__grid {
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, auto);
-    gap: var(--space-m);
-  }
-
-  .gallery__item--1 {
-    grid-column: 1 / 3;
-    grid-row: 1;
-  }
-
-  .gallery__item--2 {
-    grid-column: 3;
-    grid-row: 1 / 3;
-  }
-
-  .gallery__item--3 {
-    grid-column: 1;
-    grid-row: 2 / 4;
-  }
-
-  .gallery__item--4 {
-    grid-column: 2;
-    grid-row: 2;
-  }
-
-  .gallery__item--5 {
-    grid-column: 2 / 4;
-    grid-row: 3;
-  }
-
-  .footer {
-    padding: var(--space-m);
-  }
-
-  .footer__title {
-    font-size: clamp(7.25rem, 6rem + 2vw, 7.5rem);
-  }
-}
-
-@media (max-width: 400px) {
-  .header {
-    padding: var(--space-s);
-    grid-template-rows: auto 1fr auto;
-  }
-
-  .rec {
-    top: var(--space-xs);
-    right: calc(var(--space-xs) + 20px);
-    font-size: 0.75rem;
-    gap: 6px;
-  }
-
-  .decorated-zone::before,
-  .decorated-zone::after {
-    width: 16px;
-    height: 16px;
-  }
-
-   .header__theme-menu {
-    position: absolute;
-    top: 50%;
-    right: var(--space-s);
-    left: auto;
-    transform: translateY(-50%);
-  }
-
-  .header__theme-menu-list {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: var(--space-xs);
-  }
-
-  .header__theme-menu-button {
-    font-size: 0.8rem;
-    padding: 2px 10px;
-    text-align: right;
-  }
-
-  .header__title {
-    font-size: clamp(3.5rem, 2rem + 10vw, 5rem);
-    line-height: 0.9;
-  }
-
-  .header__subtitle {
-    font-size: 0.85rem;
-    padding: var(--space-xs);
-    line-height: 1.3;
-    max-width: 100%;
-  }
-
-  .main {
-    padding: var(--space-m) var(--space-s);
-    gap: 40px;
-  }
-
-  .section {
-    gap: var(--space-s);
-  }
-
-  .section__title {
-    font-size: 0.85rem;
-  }
-
-  .section__subtitle {
-    font-size: 0.85rem;
-    padding: var(--space-xs);
-  }
-
-  .section__text {
-    font-size: 0.85rem;
-    line-height: 1.4;
-  }
-
-  .gallery__grid {
-    grid-template-columns: 1fr;
-    gap: var(--space-xs);
-  }
-
-  .gallery__title {
-    font-size: 0.85rem;
-    padding: var(--space-xs);
-  }
-
-  .footer {
-    padding: var(--space-s);
-  }
-
-  .footer__title {
-    font-size: clamp(3.5rem, 2rem + 10vw, 5rem);
-  }
-}
-
