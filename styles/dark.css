@@ -1,31 +1,23 @@
-/* ---------- dark.css ---------- */
-:root {
-  --accent-color: #ff0070;
-  --text-color: #f1b2ce;
+/* Стили для темной темы */
+
+.theme-dark {
+  /* Цвета темной темы */
   --bg-color: #000028;
-  --bg-image: url("../images/cover-image-dark.png");
+  --text-color: #F1B2CE;
+  --accent-color: #FF0070;
+  --title-color: #DB00FF;
+  --heading-bg: #FF0070;
+  --heading-text: #000028;
+  --button-color: #FF0070;
+  --button-hover-border: #FF0070;
+  --link-shadow: #FF0070;
+  --corner-color: #FF0070;
+  
+  /* Фоновое изображение */
+  --bg-image: url(../images/cover-image-dark.png);
 }
 
-:root.theme-dark {
-  --accent-color: #ff0070;
-  --text-color: #f1b2ce;
-  --bg-color: #000028;
-  --bg-image: url("../images/cover-image-dark.png");
-  --rec-image: url("../images/rec-dark.svg");
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --accent-color: #ff0070;
-    --text-color: #f1b2ce;
-    --bg-color: #000028;
-    --bg-image: url("../images/cover-image-dark.png");
-    --rec-image: url("../images/rec-dark.svg");
-  }
-}
-
-.theme-dark .header__title,
-.theme-dark .footer__title {
-  color: #db00ff;
-  text-shadow: 4px 4px 0 #ff0070;
+/* Показываем REC только в темной теме */
+.theme-dark .rec {
+  display: block;
 }

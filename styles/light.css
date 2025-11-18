@@ -1,24 +1,47 @@
-/* ---------- light.css ---------- */
-:root.theme-light {
-  --accent-color: #ff8dcb;
+/* Стили для светлой темы */
+
+.theme-light {
+  /* Цвета светлой темы */
+  --bg-color: #FFF1F7;
   --text-color: #353430;
-  --bg-color: #fff1f7;
-  --bg-image: url("../images/cover-image-light.png");
-  --rec-image: url("../images/rec-light.svg");
+  --accent-color: #FF8DCB;
+  --title-color: #FFC2E6;
+  --heading-bg: #FF8DCB;
+  --heading-text: #353430;
+  --button-color: #353430;
+  --button-hover-border: #353430;
+  --link-shadow: #FF8DCB;
+  --corner-color: #353430;
+  
+  /* Фоновое изображение */
+  --bg-image: url(../images/cover-image-light.png);
 }
 
+/* Скрываем REC в светлой теме */
+.theme-light .rec {
+  display: none;
+}
+
+/* Медиа-запрос для автоматической светлой темы */
 @media (prefers-color-scheme: light) {
   :root {
-    --accent-color: #ff8dcb;
+    /* Дублируем переменные светлой темы */
+    --bg-color: #FFF1F7;
     --text-color: #353430;
-    --bg-color: #fff1f7;
-    --bg-image: url("../images/cover-image-light.png");
-    --rec-image: url("../images/rec-light.svg");
+    --accent-color: #FF8DCB;
+    --title-color: #FFC2E6;
+    --heading-bg: #FF8DCB;
+    --heading-text: #353430;
+    --button-color: #353430;
+    --button-hover-border: #353430;
+    --link-shadow: #FF8DCB;
+    --corner-color: #353430;
+    
+    --bg-image: url(../images/cover-image-light.png);
   }
-}
-
-.theme-light .header__title,
-.theme-light .footer__title {
-  color: #ffc2e6;
-  text-shadow: 4px 4px 0 #ff8dcb;
+  
+  /* Скрываем REC в светлой теме */
+  :root .rec {
+    display: none;
+  }
 }
