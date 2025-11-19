@@ -24,9 +24,8 @@ body {
   grid-template-columns: 1fr;
   align-items: start;
   padding: var(--page-padding);
-  /* Header на всю высоту экрана */
+  /* Header на всю высоту экрана, удален дублирующий block-size */
   min-block-size: 100vh;
-  block-size: 100vh;
   background-image: var(--bg-image);
   background-position: center;
   background-size: cover;
@@ -282,9 +281,8 @@ body {
   display: grid;
   place-items: center;
   padding: var(--page-padding);
-  /* Footer на всю высоту экрана */
+  /* Footer на всю высоту экрана, удален дублирующий block-size */
   min-block-size: 100vh;
-  block-size: 100vh;
 }
 
 .footer__title {
