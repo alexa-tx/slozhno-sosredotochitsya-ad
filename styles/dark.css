@@ -19,3 +19,13 @@
 .theme-dark .rec {
   display: block;
 }
+
+.theme-auto .rec {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .theme-auto .rec {
+    display: block;
+  }
+}
