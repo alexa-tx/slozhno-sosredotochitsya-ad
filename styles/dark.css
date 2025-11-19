@@ -1,7 +1,7 @@
 /* Стили для темной темы */
 
 .theme-dark {
-  /* Цвета темной темы */
+  /* Цвета темной темы соответствуют макету */
   --bg-color: #000028;
   --text-color: #F1B2CE;
   --accent-color: #FF0070;
@@ -13,11 +13,31 @@
   --link-shadow: #FF0070;
   --corner-color: #FF0070;
   
-  /* Фоновое изображение */
   --bg-image: url(../images/cover-image-dark.png);
 }
 
-/* Показываем REC только в темной теме */
 .theme-dark .rec {
   display: block;
+}
+
+/* Автоматическая темная тема */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #000028;
+    --text-color: #F1B2CE;
+    --accent-color: #FF0070;
+    --title-color: #DB00FF;
+    --heading-bg: #FF0070;
+    --heading-text: #000028;
+    --button-color: #FF0070;
+    --button-hover-border: #FF0070;
+    --link-shadow: #FF0070;
+    --corner-color: #FF0070;
+    
+    --bg-image: url(../images/cover-image-dark.png);
+  }
+  
+  :root .rec {
+    display: block;
+  }
 }

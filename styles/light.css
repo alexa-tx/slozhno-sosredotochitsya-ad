@@ -13,19 +13,16 @@
   --link-shadow: #FF8DCB;
   --corner-color: #353430;
   
-  /* Фоновое изображение */
   --bg-image: url(../images/cover-image-light.png);
 }
 
-/* Скрываем REC в светлой теме */
 .theme-light .rec {
   display: none;
 }
 
-/* Медиа-запрос для автоматической светлой темы */
+/* Автоматическая светлая тема */
 @media (prefers-color-scheme: light) {
   :root {
-    /* Дублируем переменные светлой темы */
     --bg-color: #FFF1F7;
     --text-color: #353430;
     --accent-color: #FF8DCB;
@@ -40,7 +37,6 @@
     --bg-image: url(../images/cover-image-light.png);
   }
   
-  /* Скрываем REC в светлой теме */
   :root .rec {
     display: none;
   }
